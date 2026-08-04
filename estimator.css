@@ -1,0 +1,1082 @@
+/* Styles pour l'estimateur de prix - Module ind?pendant */
+
+.estimator-widget {
+    position: absolute;
+    right: 2rem;
+    top: 5%;
+    z-index: 10;
+    max-width: 450px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) rgba(255, 255, 255, 0.3);
+    padding: 1rem 1rem 1rem 1rem;
+    margin-top: 2.5rem;
+}
+
+.estimator-widget::-webkit-scrollbar {
+    width: 8px;
+}
+
+.estimator-widget::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.estimator-widget::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 10px;
+}
+
+.estimator-widget::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
+}
+
+.estimator-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    animation: slideInRight 0.6s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.estimator-header {
+    background: #EAB308;
+    color: white;
+    padding: 0.8rem 1rem;
+    text-align: center;
+}
+
+.estimator-header h3 {
+    font-size: 1.2rem;
+    margin: 0 0 0.2rem 0;
+    font-weight: 700;
+}
+
+.estimator-subtitle {
+    font-size: 0.9rem;
+    margin: 0 0 0.6rem 0;
+    opacity: 0.95;
+}
+
+.estimator-badge {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    display: inline-block;
+    backdrop-filter: blur(10px);
+}
+
+.progress-bar {
+    height: 6px;
+    background: #e0e0e0;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #EAB308, #EAB308);
+    width: 0%;
+    transition: width 0.4s ease;
+}
+
+.estimator-content {
+    padding: 1rem 0.8rem;
+}
+
+.estimator-content h4 {
+    font-size: 1rem;
+    color: #333;
+    margin: 0 0 1rem 0;
+    text-align: center;
+    font-weight: 600;
+}
+
+.estimator-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    padding: 0;
+    margin: 0;
+}
+
+.estimator-option {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 0.6rem 0.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: #333;
+    text-align: center;
+    word-break: break-word;
+    min-height: 75px;
+}
+
+.estimator-option:hover {
+    background: #fff;
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
+}
+
+.option-icon {
+    font-size: 1.5rem;
+}
+
+.btn-back {
+    margin-top: 1.5rem;
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: inherit;
+    transition: all 0.3s;
+}
+
+.btn-back:hover {
+    background: #5a6268;
+    transform: translateY(-1px);
+}
+
+.estimator-result {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-price-box {
+    background: #EAB308;
+    color: white;
+    padding: 2rem 2rem 2rem 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.result-price-box h4 {
+    font-size: 1.2rem;
+    margin: 0 0 1rem 0;
+    color: white;
+}
+
+.price-range {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 1rem 0;
+    letter-spacing: -1px;
+}
+
+.result-info {
+    font-size: 0.85rem;
+    opacity: 0.95;
+    line-height: 1.6;
+    margin: 1rem 0 0 0;
+}
+
+.result-details {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.result-details h5 {
+    color: #EAB308;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0.8rem 0 0.3rem 0;
+    text-transform: uppercase;
+}
+
+.result-details h5:first-child {
+    margin-top: 0;
+}
+
+.result-details p {
+    color: #333;
+    margin: 0 0 0.5rem 0;
+    font-weight: 500;
+}
+
+.result-cta {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.btn-quote-popup {
+    background: linear-gradient(135deg, #EAB308 0%, #EAB308 50%, #EAB308 100%);
+    color: #ffffff;
+    border: 2px solid #EAB308;
+    padding: 1.2rem 2.5rem;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.4), 0 0 20px rgba(37, 99, 235, 0.2);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-family: inherit;
+    animation: neonRedPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonRedPulse {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(37, 99, 235, 0.3), 0 0 20px rgba(37, 99, 235, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(37, 99, 235, 0.5), 0 0 30px rgba(37, 99, 235, 0.3);
+    }
+}
+
+.btn-quote-popup:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.6), 0 0 40px rgba(37, 99, 235, 0.4);
+    background: linear-gradient(135deg, #EAB308 0%, #EAB308 50%, #EAB308 100%);
+}
+
+.btn-quote-popup:active {
+    transform: translateY(-1px);
+}
+
+.btn-reset {
+    width: 100%;
+    background: #000;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s;
+}
+
+.btn-reset:hover {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Bouton de fermeture de l'estimateur */
+.estimator-close {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.estimator-close:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: rotate(90deg);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Bouton de toggle mobile */
+.estimator-toggle {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .estimator-widget {
+        position: fixed;
+        right: -100%;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+        max-width: 90%;
+        width: 400px;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 0 1rem 0 0;
+        z-index: 1000;
+        transition: right 0.4s ease;
+    }
+    
+    .estimator-widget.open {
+        right: 0;
+    }
+    
+    .estimator-close {
+        display: block;
+    }
+    
+    .estimator-toggle {
+        display: block;
+        position: fixed;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--color-primary);
+        color: white;
+        border: none;
+        border-radius: 10px 0 0 10px;
+        padding: 1.5rem 0.8rem;
+        cursor: pointer;
+        z-index: 999;
+        font-weight: 700;
+        font-size: 0.9rem;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        box-shadow: -3px 0 10px rgba(0,0,0,0.2);
+        transition: all 0.3s;
+    }
+    
+    .estimator-toggle:hover {
+        background: var(--color-accent);
+        padding-right: 1rem;
+    }
+    
+    .estimator-widget.open + .estimator-toggle {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .estimator-widget {
+        position: fixed;
+        top: 85px;
+        left: 15px;
+        right: 15px;
+        bottom: 80px;
+        transform: translateY(100%);
+        max-width: none;
+        max-height: none;
+        padding: 0;
+        width: auto;
+        height: auto;
+        transition: transform 0.4s ease, visibility 0s 0.4s;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        z-index: 10000;
+        visibility: hidden;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    
+    .estimator-widget.open {
+        transform: translateY(0);
+        visibility: visible;
+        left: 15px;
+        right: 15px;
+        transition: transform 0.4s ease, visibility 0s 0s;
+    }
+    
+    .estimator-card {
+        border-radius: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .estimator-header {
+        padding: 0.8rem 0.8rem;
+        flex-shrink: 0;
+    }
+    
+    .estimator-header h3 {
+        font-size: 1.1rem;
+        margin: 0 0 0.3rem 0;
+        font-weight: 800;
+        line-height: 1.3;
+    }
+    
+    .estimator-subtitle {
+        font-size: 0.9rem;
+        margin: 0 0 0.6rem 0;
+        line-height: 1.4;
+        font-weight: 500;
+    }
+    
+    .estimator-badge {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    .estimator-content {
+        padding: 1rem 1.2rem 1.5rem 1.2rem !important;
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .estimator-content::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    .estimator-content::-webkit-scrollbar-thumb {
+        background: rgba(37, 99, 235, 0.3);
+        border-radius: 10px;
+    }
+    
+    .estimator-content h4 {
+        font-size: 1.25rem;
+        margin: 0 0 1rem 0;
+        font-weight: 700;
+        line-height: 1.3;
+    }
+
+    .estimator-options {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.7rem;
+        margin: 0;
+    }
+    
+    .estimator-option {
+        padding: 0.8rem 0.5rem;
+        font-size: 0.95rem;
+        min-height: 85px;
+        gap: 0.5rem;
+    }
+
+    /* 2 choix - Tr?s grandes box */
+    .estimator-options:has(.estimator-option:nth-child(2):last-child) .estimator-option {
+        min-height: 120px;
+        font-size: 1.15rem;
+        padding: 1.2rem 0.7rem;
+    }
+
+    .estimator-options:has(.estimator-option:nth-child(2):last-child) .option-icon {
+        font-size: 3rem;
+    }
+
+    /* 3 choix - Grandes box */
+    .estimator-options:has(.estimator-option:nth-child(3):last-child) .estimator-option {
+        min-height: 110px;
+        font-size: 1.05rem;
+        padding: 1rem 0.6rem;
+    }
+
+    .estimator-options:has(.estimator-option:nth-child(3):last-child) .option-icon {
+        font-size: 2.7rem;
+    }
+
+    /* 4 choix - Box moyennes-grandes */
+    .estimator-options:has(.estimator-option:nth-child(4):last-child) .estimator-option {
+        min-height: 105px;
+        font-size: 0.95rem;
+        padding: 0.9rem 0.5rem;
+    }
+
+    .estimator-options:has(.estimator-option:nth-child(4):last-child) .option-icon {
+        font-size: 2.3rem;
+    }
+
+    /* 5-6 choix - Box moyennes */
+    .estimator-options:has(.estimator-option:nth-child(5)) .estimator-option,
+    .estimator-options:has(.estimator-option:nth-child(6):last-child) .estimator-option {
+        min-height: 85px;
+        font-size: 0.9rem;
+        padding: 0.7rem 0.45rem;
+    }
+
+    .estimator-options:has(.estimator-option:nth-child(5)) .option-icon,
+    .estimator-options:has(.estimator-option:nth-child(6):last-child) .option-icon {
+        font-size: 1.8rem;
+    }
+
+    /* 7-8 choix - Box compactes */
+    .estimator-options:has(.estimator-option:nth-child(7)) .estimator-option,
+    .estimator-options:has(.estimator-option:nth-child(8):last-child) .estimator-option {
+        min-height: 72px;
+        font-size: 0.85rem;
+        padding: 0.6rem 0.4rem;
+    }
+
+    .estimator-options:has(.estimator-option:nth-child(7)) .option-icon,
+    .estimator-options:has(.estimator-option:nth-child(8):last-child) .option-icon {
+        font-size: 1.6rem;
+    }
+
+    /* 9-10 choix - Box tr?s compactes */
+    .estimator-options:has(.estimator-option:nth-child(9)) .estimator-option,
+    .estimator-options:has(.estimator-option:nth-child(10):last-child) .estimator-option {
+        min-height: 65px;
+        font-size: 0.8rem;
+        padding: 0.5rem 0.3rem;
+    }
+
+    .estimator-options:has(.estimator-option:nth-child(9)) .option-icon,
+    .estimator-options:has(.estimator-option:nth-child(10):last-child) .option-icon {
+        font-size: 1.4rem;
+    }
+    
+    .option-icon {
+        font-size: 1.7rem;
+    }
+
+    .price-range {
+        font-size: 1.8rem;
+    }
+    
+    .result-price-box {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .result-price-box h4 {
+        font-size: 1rem;
+        margin: 0 0 0.5rem 0;
+    }
+    
+    .btn-back {
+        margin-top: 1rem;
+        padding: 0.7rem 1.2rem;
+    }
+    
+    .result-details {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .result-details h5 {
+        font-size: 0.75rem;
+        margin: 0.6rem 0 0.25rem 0;
+    }
+    
+    .result-details p {
+        font-size: 0.85rem;
+        margin: 0 0 0.4rem 0;
+    }
+    
+    .result-info {
+        font-size: 0.75rem;
+        margin: 0.6rem 0 0 0;
+    }
+    
+    .btn-quote-popup {
+        padding: 0.9rem 1.8rem;
+        font-size: 0.95rem;
+    }
+    
+    .btn-reset {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .result-cta {
+        margin-bottom: 1rem;
+    }
+    
+    .estimator-toggle {
+        padding: 1.2rem 0.7rem;
+        font-size: 0.85rem;
+    }
+    
+    .quote-popup {
+        padding: 24px;
+        max-width: calc(100vw - 2rem);
+    }
+
+    .quote-popup h3 {
+        font-size: 20px;
+    }
+
+    .popup-price {
+        font-size: 18px;
+    }
+}
+
+/* Animation de scroll pour la grille */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Popup de devis */
+.quote-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 20px;
+}
+
+.quote-popup {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.popup-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #666;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 8px;
+    transition: color 0.3s;
+}
+
+.popup-close:hover {
+    color: #EAB308;
+}
+
+.quote-popup h3 {
+    margin: 0 0 12px;
+    font-size: 24px;
+    color: #111;
+}
+
+.popup-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #EAB308;
+    margin-bottom: 24px;
+}
+
+.quote-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.quote-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.quote-form label {
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.quote-form input {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.quote-form input:focus {
+    outline: none;
+    border-color: #EAB308;
+}
+
+.btn-submit-quote {
+    background: linear-gradient(135deg, #EAB308 0%, #EAB308 50%, #EAB308 100%);
+    color: #ffffff;
+    border: 2px solid #EAB308;
+    padding: 14px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 8px;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.4), 0 0 20px rgba(37, 99, 235, 0.2);
+    animation: neonRedPulse 2s ease-in-out infinite;
+}
+
+.btn-submit-quote:hover {
+    background: linear-gradient(135deg, #EAB308 0%, #EAB308 50%, #EAB308 100%);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.6), 0 0 40px rgba(37, 99, 235, 0.4);
+}
+
+.quote-success {
+    display: none;
+    background: #d4edda;
+    color: #155724;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+/* Styles pour le formulaire de l'?tape 8 */
+.estimator-form-step {
+    padding: 0;
+}
+
+.estimator-form-step h4 {
+    font-size: 1.25rem;
+    color: #333;
+    margin: 0 0 0.4rem 0;
+    text-align: center;
+    font-weight: 700;
+}
+
+.form-subtitle {
+    text-align: center;
+    color: #EAB308;
+    font-size: 1rem;
+    margin: 0 0 1rem 0;
+    font-weight: 600;
+}
+
+.estimator-contact-form .form-group {
+    margin-bottom: 0.7rem;
+}
+
+.estimator-contact-form input {
+    width: 100%;
+    padding: 0.7rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.estimator-contact-form input:focus {
+    outline: none;
+    border-color: #EAB308;
+}
+
+.estimator-contact-form input::placeholder {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.btn-submit-estimator {
+    width: 100%;
+    background: linear-gradient(135deg, #EAB308 0%, #EAB308 100%);
+    color: #ffffff;
+    border: 2px solid #EAB308;
+    padding: 0.85rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 0.5rem;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.6),
+                0 0 40px rgba(37, 99, 235, 0.4),
+                0 0 60px rgba(37, 99, 235, 0.2),
+                inset 0 0 20px rgba(37, 99, 235, 0.2);
+    font-family: inherit;
+    animation: neon-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes neon-pulse {
+    0% {
+        box-shadow: 0 0 20px rgba(37, 99, 235, 0.6),
+                    0 0 40px rgba(37, 99, 235, 0.4),
+                    0 0 60px rgba(37, 99, 235, 0.2),
+                    inset 0 0 20px rgba(37, 99, 235, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(37, 99, 235, 0.8),
+                    0 0 60px rgba(37, 99, 235, 0.6),
+                    0 0 90px rgba(37, 99, 235, 0.4),
+                    inset 0 0 30px rgba(37, 99, 235, 0.3);
+    }
+}
+
+.btn-submit-estimator:hover {
+    background: linear-gradient(135deg, #EAB308 0%, #EAB308 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.8),
+                0 0 60px rgba(37, 99, 235, 0.6),
+                0 0 90px rgba(37, 99, 235, 0.4),
+                0 4px 20px rgba(0, 0, 0, 0.3);
+    border-color: #EAB308;
+}
+
+.btn-submit-estimator:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.estimator-success {
+    display: none;
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+.estimator-success .success-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.estimator-success h4 {
+    color: #155724;
+    font-size: 1rem;
+    margin: 0 0 0.3rem 0;
+    font-weight: 600;
+}
+
+.estimator-success p {
+    color: #155724;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+@media (max-width: 480px) {
+    .estimator-widget {
+        bottom: 70px;
+        max-height: 72vh;
+    }
+    
+    .estimator-header {
+        padding: 0.6rem 0.7rem;
+    }
+    
+    .estimator-header h3 {
+        font-size: 0.95rem;
+        margin: 0 0 0.15rem 0;
+    }
+    
+    .estimator-subtitle {
+        font-size: 0.7rem;
+        margin: 0 0 0.5rem 0;
+    }
+    
+    .estimator-badge {
+        padding: 0.25rem 0.6rem;
+        font-size: 0.65rem;
+    }
+    
+    .estimator-content {
+        padding: 0.7rem 0.5rem;
+    }
+    
+    .estimator-content h4 {
+        font-size: 0.85rem;
+        margin: 0 0 0.5rem 0;
+    }
+    
+    .estimator-options {
+        gap: 0.4rem;
+    }
+    
+    .estimator-option {
+        font-size: 0.7rem;
+        min-height: 65px;
+        padding: 0.4rem 0.25rem;
+        gap: 0.25rem;
+    }
+    
+    .option-icon {
+        font-size: 1.2rem;
+    }
+    
+    .price-range {
+        font-size: 1.6rem;
+        margin: 0.5rem 0;
+    }
+    
+    .result-price-box {
+        padding: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .result-price-box h4 {
+        font-size: 0.9rem;
+        margin: 0 0 0.4rem 0;
+    }
+    
+    .btn-back {
+        margin-top: 0.8rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .result-details {
+        padding: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .result-details h5 {
+        font-size: 0.7rem;
+        margin: 0.5rem 0 0.2rem 0;
+    }
+    
+    .result-details p {
+        font-size: 0.8rem;
+        margin: 0 0 0.3rem 0;
+    }
+    
+    .result-info {
+        font-size: 0.7rem;
+        margin: 0.5rem 0 0 0;
+        line-height: 1.4;
+    }
+    
+    .btn-quote-popup {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        border-radius: 20px;
+    }
+    
+    .btn-reset {
+        padding: 0.7rem;
+        font-size: 0.85rem;
+    }
+    
+    .result-cta {
+        margin-bottom: 0.8rem;
+    }
+}
+/* Styles compacts pour desktop */
+@media (min-width: 769px) {
+    .estimator-widget {
+        max-width: 380px;
+        padding: 0.8rem;
+    }
+    
+    .estimator-header {
+        padding: 0.8rem;
+    }
+    
+    .estimator-header h3 {
+        font-size: 1rem;
+        margin: 0 0 0.2rem 0;
+    }
+    
+    .estimator-subtitle {
+        font-size: 0.8rem;
+        margin: 0 0 0.8rem 0;
+    }
+    
+    .estimator-badge {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.7rem;
+    }
+    
+    .estimator-content {
+        padding: 0.8rem 0.6rem;
+    }
+    
+    .estimator-content h4 {
+        font-size: 0.9rem;
+        margin: 0 0 0.8rem 0;
+    }
+    
+    .estimator-options {
+        gap: 0.6rem;
+    }
+    
+    .estimator-option {
+        padding: 0.5rem 0.3rem;
+    }
+    
+    .option-icon {
+        font-size: 1.8rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .option-label {
+        font-size: 0.75rem;
+    }
+    
+    .result-price-box {
+        padding: 1.2rem 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .result-price-box h4 {
+        font-size: 1rem;
+        margin: 0 0 0.6rem 0;
+    }
+    
+    .price-range {
+        font-size: 2rem;
+        margin: 0.6rem 0;
+    }
+    
+    .price-details {
+        font-size: 0.75rem;
+        margin-top: 0.6rem;
+    }
+    
+    .result-features {
+        margin-bottom: 1rem;
+    }
+    
+    .feature-item {
+        padding: 0.6rem;
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .result-cta {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .btn-back {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+    
+    .estimator-actions {
+        gap: 0.6rem;
+    }
+}
